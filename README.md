@@ -1,8 +1,10 @@
 # goFog
 
 ## Palindromic zero dependencies CLI for aws web services
+
 Plain and simple copy a file somewhere in your `$PATH` and start
 interacting with AWS cloud, no dependencies.
+
 Output in JSON to make it easy to automate and use the CLI from other
 scripts and tools.
 
@@ -14,7 +16,9 @@ scripts and tools.
 3. use it
 
 ## Commands Supported
+
 * describe instances
+
 ```sh
 gofog ec2 describe-instances -r us-east-1
 # Is possible to specify filters by using the -f flag
