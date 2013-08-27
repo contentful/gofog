@@ -17,6 +17,8 @@ scripts and tools.
 
 ## Commands Supported
 
+### EC2
+
 * describe instances
 
 ```sh
