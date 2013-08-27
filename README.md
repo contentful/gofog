@@ -29,6 +29,7 @@ gofog ec2 describe-instances -r us-east-1 -f tag:environment=production
 ```
 
 * create snapshot
+
 Creates a snapshot for a given EBS volume
 
 ```sh
