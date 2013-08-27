@@ -25,3 +25,11 @@ gofog ec2 describe-instances -r us-east-1
 gofog ec2 describe-instances -r us-east-1 -f tag:environment=production
 # The -f flag can be used multiple times to express multiple constraints
 ```
+
+### SNS
+
+* publish message
+
+```sh
+echo "the body"|./gofog sns publish -t arn:aws:sns:us-east-1:my_topic -s "this is the subject"
+```

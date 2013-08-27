@@ -4,6 +4,7 @@ import (
 	"os"
 	"fmt"
 	"github.com/hungryblank/gofog/ec2"
+	"github.com/hungryblank/gofog/sns"
 )
 
 func main() {
@@ -12,9 +13,14 @@ func main() {
 		os.Exit(1)
 	}
 	cmd := os.Args[1]
-	if cmd == "ec2" {
+	switch cmd {
+	case "ec2":
 		ec2.Run()
-	} else {
-		panic(fmt.Sprintf("unknown command %v", cmd))
+		os.Exit(0)
+	case "sns":
+		sns.Run()
+		os.Exit(0)
 	}
+	fmt.Sprintf("unknown command %v", cmd)
+	os.Exit(1)
 }
