@@ -10,9 +10,14 @@ func Run() {
 		os.Exit(1)
 	}
 	cmd := os.Args[2]
-	if cmd == "describe-instances" {
+	switch cmd {
+	case "describe-instances":
 		DescribeInstances()
-	} else {
-		panic(fmt.Sprintf("unknown ec2 command %v", cmd))
+		os.Exit(0)
+	case "create-snapshot":
+		CreateSnapshot()
+		os.Exit(0)
 	}
+	fmt.Sprintf("unknown command %v", cmd)
+	os.Exit(1)
 }

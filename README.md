@@ -28,6 +28,13 @@ gofog ec2 describe-instances -r us-east-1 -f tag:environment=production
 # The -f flag can be used multiple times to express multiple constraints
 ```
 
+* create snapshot
+Creates a snapshot for a given EBS volume
+
+```sh
+gofog ec2 create-snapshot vol-myVolumeId -r us-east-1 -d some_description
+```
+
 ### SNS
 
 * publish message
