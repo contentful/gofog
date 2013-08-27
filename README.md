@@ -41,5 +41,5 @@ gofog ec2 create-snapshot vol-myVolumeId -r us-east-1 -d some_description
 * publish message
 
 ```sh
-echo "the body"|./gofog sns publish -t arn:aws:sns:us-east-1:my_topic -s "this is the subject"
+echo "the body" | gofog sns publish -t arn:aws:sns:us-east-1:my_topic -s "this is the subject"
 ```
