@@ -36,6 +36,15 @@ Creates a snapshot for a given EBS volume
 gofog ec2 create-snapshot vol-myVolumeId -r us-east-1 -d some_description
 ```
 
+* describe snapshots
+
+Describe the snapshots
+
+```sh
+gofog ec2 describe-snapshots -r us-east-1 -f volume-id=vol-myVolumeId
+```
+
+
 ### SNS
 
 * publish message

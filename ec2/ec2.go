@@ -17,7 +17,21 @@ func Run() {
 	case "create-snapshot":
 		CreateSnapshot()
 		os.Exit(0)
+	case "describe-snapshots":
+		DescribeSnapshots()
+		os.Exit(0)
 	}
 	fmt.Sprintf("unknown command %v", cmd)
 	os.Exit(1)
+}
+
+type filterOption []string
+
+func (i *filterOption) String() string {
+	return fmt.Sprint(*i)
+}
+
+func (i *filterOption) Set(value string) error {
+	*i = append(*i, value)
+	return nil
 }

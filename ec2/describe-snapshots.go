@@ -9,10 +9,10 @@ import (
 	"strings"
 )
 
-func DescribeInstances() {
+func DescribeSnapshots() {
 	var filterFlags filterOption
 	filter := ec2.NewFilter()
-	flags := flag.NewFlagSet("describe-instances", flag.ExitOnError)
+	flags := flag.NewFlagSet("describe-snapshots", flag.ExitOnError)
 	//config := flags.String("c", "none", "the configuration file")
 	regionString := flags.String("r", "us-east-1", "the AWS region")
 	flags.Var(&filterFlags, "f", "the filter")
@@ -26,13 +26,12 @@ func DescribeInstances() {
 	for idx := range filterFlags {
 		tokens := strings.Split(filterFlags[idx], "=")
 		filter.Add(tokens[0], tokens[1])
-		//fmt.Printf("foo bar %s", *config)
 	}
-	resp, err := connection.Instances(nil, filter)
+	resp, err := connection.Snapshots(nil, filter)
 	if err != nil {
 		panic(err)
 	}
-	reservations := resp.Reservations
-	j, err := json.Marshal(reservations)
+	snapshots := resp.Snapshots
+	j, err := json.Marshal(snapshots)
 	os.Stdout.Write(j)
 }
