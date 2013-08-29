@@ -49,6 +49,14 @@ Describe the snapshots
 gofog ec2 describe-snapshots -r us-east-1 -f volume-id=vol-myVolumeId
 ```
 
+* delete snapshot
+
+Delete the snapshots
+
+```sh
+gofog ec2 delete-snapshot snap-MysnapId -r us-east-1
+```
+
 
 ### SNS
 
