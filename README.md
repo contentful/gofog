@@ -11,6 +11,11 @@ scripts and tools.
 ## Setup
 
 1. copy the executable
+
+```sh
+wget http://downloads.gofog.org/gofog-0.0.2-x86_64
+```
+
 2. set `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment
    variables
 3. use it
