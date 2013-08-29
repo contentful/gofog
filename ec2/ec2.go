@@ -20,6 +20,9 @@ func Run() {
 	case "describe-snapshots":
 		DescribeSnapshots()
 		os.Exit(0)
+	case "delete-snapshot":
+		DeleteSnapshot()
+		os.Exit(0)
 	}
 	fmt.Sprintf("unknown command %v", cmd)
 	os.Exit(1)
