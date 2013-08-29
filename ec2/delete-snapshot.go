@@ -20,7 +20,6 @@ func DeleteSnapshot() {
 		panic(err)
 	}
 	region := aws.Regions[*regionString]
-	fmt.Printf("%v", snapshotIds)
 	connection := ec2.New(auth, region)
 
 	resp, err := connection.DeleteSnapshots(snapshotIds)
