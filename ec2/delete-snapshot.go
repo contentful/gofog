@@ -6,7 +6,6 @@ import (
 	"encoding/json"
 	"os"
 	"strings"
-	"fmt"
 	"flag"
 )
 
