@@ -34,5 +34,8 @@ func DescribeInstances() {
 	}
 	reservations := resp.Reservations
 	j, err := json.Marshal(reservations)
+	if err != nil {
+		panic(err)
+	}
 	os.Stdout.Write(j)
 }
