@@ -5,6 +5,7 @@ import (
 	"github.com/hailocab/goamz/ec2"
 	"encoding/json"
 	"os"
+	"time"
 	"flag"
 	"strings"
 )
@@ -17,7 +18,7 @@ func DescribeSnapshots() {
 	regionString := flags.String("r", "us-east-1", "the AWS region")
 	flags.Var(&filterFlags, "f", "the filter")
 	flags.Parse(os.Args[3:])
-	auth, err := aws.EnvAuth()
+	auth, authErr := aws.GetAuth("", "", "", time.Now().Add(time.Second*3600))
 	if err != nil {
 		panic(err)
 	}

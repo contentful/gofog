@@ -5,6 +5,7 @@ import (
 	"github.com/hailocab/goamz/ec2"
 	"encoding/json"
 	"os"
+	"time"
 	"flag"
 	"strings"
 )
@@ -17,7 +18,7 @@ func DescribeInstances() {
 	regionString := flags.String("r", "us-east-1", "the AWS region")
 	flags.Var(&filterFlags, "f", "the filter")
 	flags.Parse(os.Args[3:])
-	auth, err := aws.EnvAuth()
+	auth, err := aws.GetAuth("", "", "", time.Now().Add(time.Second*3600))
 	if err != nil {
 		panic(err)
 	}
@@ -28,7 +29,7 @@ func DescribeInstances() {
 		filter.Add(tokens[0], tokens[1])
 		//fmt.Printf("foo bar %s", *config)
 	}
-	resp, err := connection.Instances(nil, filter)
+	resp, err := connection.DescribeInstances(nil, filter)
 	if err != nil {
 		panic(err)
 	}

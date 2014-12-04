@@ -4,6 +4,7 @@ import (
 	"github.com/hailocab/goamz/aws"
 	"github.com/hailocab/goamz/exp/sns"
 	"os"
+	"time"
 	"encoding/json"
 	"flag"
 	"io/ioutil"
@@ -25,7 +26,7 @@ func Publish() {
 	if stdinErr != nil {
 		panic(stdinErr)
 	}
-	auth, authErr := aws.EnvAuth()
+	auth, authErr := aws.GetAuth("", "", "", time.Now().Add(time.Second*3600))
 	if authErr != nil {
 		panic(authErr)
 	}
