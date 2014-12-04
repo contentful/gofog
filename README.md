@@ -13,7 +13,7 @@ scripts and tools.
 1. copy the executable
 
 ```sh
-wget http://downloads.gofog.org/gofog-0.0.2-x86_64
+wget http://downloads.gofog.org/gofog-0.0.4-x86_64
 ```
 
 2. set `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment
