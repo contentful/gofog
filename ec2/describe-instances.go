@@ -1,13 +1,13 @@
 package ec2
 
 import (
+	"encoding/json"
+	"flag"
 	"github.com/hailocab/goamz/aws"
 	"github.com/hailocab/goamz/ec2"
-	"encoding/json"
 	"os"
-	"time"
-	"flag"
 	"strings"
+	"time"
 )
 
 func DescribeInstances() {

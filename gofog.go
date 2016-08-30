@@ -1,10 +1,10 @@
 package main
 
 import (
-	"os"
 	"fmt"
 	"github.com/hungryblank/gofog/ec2"
 	"github.com/hungryblank/gofog/sns"
+	"os"
 )
 
 func main() {

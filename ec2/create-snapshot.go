@@ -1,12 +1,12 @@
 package ec2
 
 import (
+	"encoding/json"
+	"flag"
 	"github.com/hailocab/goamz/aws"
 	"github.com/hailocab/goamz/ec2"
-	"encoding/json"
 	"os"
 	"time"
-	"flag"
 )
 
 func CreateSnapshot() {
@@ -16,8 +16,8 @@ func CreateSnapshot() {
 	flags.Parse(os.Args[4:])
 	volumeIdString := os.Args[3]
 	auth, authErr := aws.GetAuth("", "", "", time.Now().Add(time.Second*3600))
-	if err != nil {
-		panic(err)
+	if authErr != nil {
+		panic(authErr)
 	}
 	region := aws.Regions[*regionString]
 	connection := ec2.New(auth, region)
