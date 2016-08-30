@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 )
+
 func Run() {
 	if len(os.Args) < 3 {
 		fmt.Fprintf(os.Stderr, "%s %s you need to specify a command, available commands are: %s\n", os.Args[0], "ec2", "describe-instances")
@@ -22,6 +23,9 @@ func Run() {
 		os.Exit(0)
 	case "delete-snapshot":
 		DeleteSnapshot()
+		os.Exit(0)
+	case "create-tags":
+		CreateTags()
 		os.Exit(0)
 	}
 	fmt.Sprintf("unknown command %v", cmd)

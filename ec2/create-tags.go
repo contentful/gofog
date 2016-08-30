@@ -9,19 +9,25 @@ import (
 	"time"
 )
 
-func CreateSnapshot() {
-	flags := flag.NewFlagSet("create-snapshot", flag.ExitOnError)
+func CreateTags() {
+	flags := flag.NewFlagSet("create-tags", flag.ExitOnError)
 	regionString := flags.String("r", "us-east-1", "the AWS region")
-	descriptionString := flags.String("d", "", "description")
+	tagKey := flags.String("k", "", "tag key")
+	tagValue := flags.String("v", "", "tag value")
 	flags.Parse(os.Args[4:])
-	volumeIdString := os.Args[3]
+	instanceIdString := os.Args[3]
 	auth, authErr := aws.GetAuth("", "", "", time.Now().Add(time.Second*3600))
 	if authErr != nil {
 		panic(authErr)
 	}
 	region := aws.Regions[*regionString]
 	connection := ec2.New(auth, region)
-	resp, err := connection.CreateSnapshot(volumeIdString, *descriptionString)
+	instanceIds := make([]string, 1)
+	instanceIds[0] = instanceIdString
+	tag := ec2.Tag{Key: *tagKey, Value: *tagValue}
+	tags := make([]ec2.Tag, 1)
+	tags[0] = tag
+	resp, err := connection.CreateTags(instanceIds, tags)
 	if err != nil {
 		panic(err)
 		os.Exit(1)
