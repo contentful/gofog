@@ -1,0 +1,7 @@
+package: github.com/hungryblank/gofog
+import:
+- package: github.com/hailocab/goamz
+  subpackages:
+  - aws
+  - ec2
+  - exp/sns
