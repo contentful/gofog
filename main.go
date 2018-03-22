@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/hungryblank/gofog/ec2"
-	"github.com/hungryblank/gofog/sns"
+	"github.com/contentful/gofog/ec2"
+	"github.com/contentful/gofog/sns"
 	"os"
 )
 
