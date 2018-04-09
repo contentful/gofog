@@ -29,6 +29,6 @@ jobs:
           name: Upload to S3
           command: |
             if [[ "$CIRCLE_BRANCH" == "master" ]]; then
-              aws s3 cp ./gofog s3://${LAB_ASSETS_BUCKET}/gofog
-              aws s3 cp ./gofog.sum s3://${LAB_ASSETS_BUCKET}/gofog.sum
+              aws s3 cp ./gofog s3://${LAB_ASSETS_BUCKET}/gofog --acl public-read
+              aws s3 cp ./gofog.sum s3://${LAB_ASSETS_BUCKET}/gofog.sum --acl public-read
             fi
