@@ -28,7 +28,19 @@ jobs:
       - deploy:
           name: Upload to S3
           command: |
-            if [[ "$CIRCLE_BRANCH" == "master" ]]; then
-              aws s3 cp ./gofog s3://${LAB_ASSETS_BUCKET}/gofog --acl public-read
-              aws s3 cp ./gofog.sum s3://${LAB_ASSETS_BUCKET}/gofog.sum --acl public-read
+            if [[ "$CIRCLE_BRANCH" != "master" ]]; then exit 0; fi
+            FILENAME=gofog
+            if [[ "$CIRCLE_TAG" != "" ]]; then
+              FILENAME="gofog-$CIRCLE_TAG"
             fi
+            aws s3 cp ./gofog s3://${LAB_ASSETS_BUCKET}/${FILENAME} --acl public-read
+            aws s3 cp ./gofog.sum s3://${LAB_ASSETS_BUCKET}/${FILENAME}.sum --acl public-read
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /.*/
