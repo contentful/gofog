@@ -28,7 +28,7 @@ jobs:
       - deploy:
           name: Upload to S3
           command: |
-            if [[ "$CIRCLE_BRANCH" != "master" ]]; then exit 0; fi
+            if [[ "$CIRCLE_BRANCH" != "master" && "$CIRCLE_TAG" == "" ]]; then exit 0; fi
             FILENAME=gofog
             if [[ "$CIRCLE_TAG" != "" ]]; then
               FILENAME="gofog-$CIRCLE_TAG"
