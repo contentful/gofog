@@ -16,7 +16,10 @@ jobs:
           command: dep ensure
       - run:
           name: Build binary
-          command: go build
+          command: |
+            VERSION=$CIRCLE_BRANCH
+            if [[ "$CIRCLE_TAG" != "" ]]; then VERSION=$CIRCLE_TAG; fi
+            go build -ldflags "-X main.gofogVersion=$VERSION"
       - run:
           name: Generate checksum
           command: sha512sum gofog > gofog.sum
